@@ -1,15 +1,16 @@
 import {
-	FETCHING_MAILS_START,
-	SELECT_MAIL
+  FETCHING_MAILS,
+  START,
+  SELECT_MAIL
 } from './ActionTypes';
 
 export const getMailsData = () => ({
-	type: FETCHING_MAILS_START,
-	callAPI: true
+  type: FETCHING_MAILS + START,
+  callAPI: true
 });
 
 export const selectMail = id => ({
-	type: SELECT_MAIL,
-	payload: {id},
-    callAPI: true
+  type: SELECT_MAIL,
+  payload: {id},
+  callAPI: true
 });
