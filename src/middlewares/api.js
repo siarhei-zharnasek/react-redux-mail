@@ -24,9 +24,9 @@ export default store => next => action => {
     return next(action);
   }
 
-  if (type === FETCHING_MAILS+START) {
+  if (type === FETCHING_MAILS + START) {
     setTimeout(() => next({
-      type: FETCHING_MAILS+SUCCESS,
+      type: FETCHING_MAILS + SUCCESS,
       payload: messages
     }), 400);
   }
