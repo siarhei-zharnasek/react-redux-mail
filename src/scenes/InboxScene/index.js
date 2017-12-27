@@ -1,28 +1,20 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
-import MessagesList from './MessagesList';
-import {getMailsData} from '../../actions/index';
+import MailListScene from './MailsListScene';
+import MailScene from './MailScene';
+import {Route} from "react-router-dom";
+import NestedRouterLevel from "../../decorators/NestedRouterLevel";
 
-class App extends Component {
-  componentDidMount() {
-    this.props.getMailsData();
-  }
+class InboxScene extends Component {
 
   render() {
     return (
-      <div>
-        <MessagesList messages={this.props.messages}/>
-      </div>
+      <NestedRouterLevel>
+        <Route path="/inbox" component={MailListScene} exact/>
+        <Route path="/inbox/:id" renderComponent={MailScene} exact/>
+      </NestedRouterLevel>
     );
   }
+
 }
 
-App.propTypes = {
-  messages: PropTypes.array.isRequired
-};
-
-const mapStateToProps = ({MessagesData}) => ({messages: MessagesData.data});
-const mapDispatchToProps = {getMailsData};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default InboxScene;

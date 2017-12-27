@@ -6,9 +6,14 @@ import {routerMiddleware, ConnectedRouter} from 'react-router-redux';
 import {Route, Redirect, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import InboxScene from './InboxScene';
-import MailScene from './MailScene';
 import reducer from '../reducers/index';
 import api from '../middlewares/api';
+import {MAIN_NAVIGATION} from "../const/navigation-items";
+import Navigation from "../components/Navigation";
+import SentScene from "./SentScene";
+import TrashScene from "./TrashScene";
+import ErrorScene from "./ErrorScene";
+
 
 const history = createBrowserHistory();
 const enhancer = applyMiddleware(thunk, routerMiddleware(history), api);
@@ -18,11 +23,21 @@ const Root = () => {
   return (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <Switch>
-          <Route path="/inbox" component={InboxScene}/>
-          <Route path="/:id" component={MailScene}/>
-          <Redirect from="/" to="/inbox"/>
-        </Switch>
+        <div className="root">
+          <Navigation nav_items={MAIN_NAVIGATION}/>
+          <div className="root_scene-layout">
+            <Switch>
+              <Route path="/inbox" component={InboxScene}/>
+              <Route path="/sent" component={SentScene}/>
+              <Route path="/trash" component={TrashScene}/>
+
+              <Route path="/error" component={ErrorScene}/>
+
+              <Redirect from="/" to="/inbox" exact/>
+              <Redirect from="*" to="/error"/>
+            </Switch>
+          </div>
+        </div>
       </ConnectedRouter>
     </Provider>
   );

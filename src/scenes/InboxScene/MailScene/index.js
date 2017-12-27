@@ -1,24 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {selectMail} from '../../actions/index';
+import {selectMail} from '../../../actions/index';
+import EmailData from "../../../components/Email";
 
 class MessageContainer extends Component {
+
   componentDidMount() {
-    const {id} = this.props.match.params;
+    const {id} = this.props;
     this.props.selectMail(id);
   }
 
   render() {
-    const {sender, subject, date} = this.props.SelectedMail;
-
-    return (
-      <div>
-        <span>{sender}</span>
-        <span className="message-subject">{subject}</span>
-        <span>{date}</span>
-      </div>
-    );
+    const {id, SelectedMail: {id: selectedId}} = this.props;
+    const body = selectedId === Number(id) ? <EmailData {...this.props.SelectedMail}/> : null;
+    return body;
   }
+
 }
 
 const mapStateToProps = ({SelectedMail}) => ({SelectedMail});

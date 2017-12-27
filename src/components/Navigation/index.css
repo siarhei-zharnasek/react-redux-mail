@@ -1,0 +1,7 @@
+.navigation_main {
+    width: 150px;
+}
+
+.navigation_main_active-link {
+    color: red;
+}
