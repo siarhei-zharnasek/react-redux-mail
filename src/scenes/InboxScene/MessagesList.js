@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import MessagePreview from './MessagePreview';
 
 const MessagesList = ({messages}) => (
-	<div>
-		{messages.map((msg) => <MessagePreview key={msg.id} {...msg} />)}
-	</div>
+  <div>
+    {messages.map((msg) => <MessagePreview key={msg.id} {...msg} />)}
+  </div>
 );
 
 MessagesList.propTypes = {
-	messages: PropTypes.array.isRequired
+  messages: PropTypes.array.isRequired
 };
 
 export default MessagesList;

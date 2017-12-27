@@ -1,5 +1,6 @@
-export const FETCHING_MAILS_START = 'FETCHING_MAILS_START';
-export const FETCHING_MAILS_SUCCESS = 'FETCHING_MAILS_SUCCESS';
-export const FETCHING_MAILS_FAIL = 'FETCHING_MAILS_FAIL';
-
+export const FETCHING_MAILS = 'FETCHING_MAILS';
 export const SELECT_MAIL = 'SELECT_MAIL';
+
+export const START = '_START';
+export const SUCCESS = '_SUCCESS';
+export const FAIL = '_FAIL';
