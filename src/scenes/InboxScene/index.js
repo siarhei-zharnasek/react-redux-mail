@@ -10,7 +10,7 @@ class InboxScene extends Component {
     return (
       <NestedRouterLevel>
         <Route path="/inbox" component={MailListScene} exact/>
-        <Route path="/inbox/:id" renderComponent={MailScene} exact/>
+        <Route path="/inbox/:id" component={MailScene} exact/>
       </NestedRouterLevel>
     );
   }

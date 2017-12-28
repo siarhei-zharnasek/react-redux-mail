@@ -1,25 +1,30 @@
-import React, {Component} from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import {NavLink} from "react-router-dom";
 
 import './index.css';
 
-export default class Navigation extends Component {
+const Navigation = ({navItems}) => {
 
-  render() {
-    const {nav_items} = this.props;
-
-    const links = nav_items.map((item) => {
-      return (
-        <li key={item.key}>
-          <NavLink activeClassName="navigation_main_active-link"  to={`/${item.key}`}>{item.title}</NavLink>
-        </li>
-      )
-    });
-
+  const links = navItems.map((item) => {
+    const {key, title} = item;
     return (
-      <ul className="navigation_main">
-        {links}
-      </ul>
-    );
-  }
-}
+      <li key={key}>
+        <NavLink activeClassName="navigation_main_active-link" to={`/${key}`}>{title}</NavLink>
+      </li>
+    )
+  });
+
+  return (
+    <ul className="navigation_main">
+      {links}
+    </ul>
+  );
+};
+
+Navigation.propTypes = {
+  navItems: PropTypes.array.isRequired,
+};
+
+export default Navigation;

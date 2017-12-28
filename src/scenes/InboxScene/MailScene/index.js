@@ -1,24 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {selectMail} from '../../../actions/index';
+import {selectMail, unSelectMail} from '../../../actions/index';
 import EmailData from "../../../components/Email";
 
 class MessageContainer extends Component {
 
   componentDidMount() {
-    const {id} = this.props;
+    const {id} = this.props.match.params;
     this.props.selectMail(id);
   }
 
+  componentWillUnmount() {
+    this.props.unSelectMail();
+  }
+
   render() {
-    const {id, SelectedMail: {id: selectedId}} = this.props;
-    const body = selectedId === Number(id) ? <EmailData {...this.props.SelectedMail}/> : null;
+    const {id: selectedId} = this.props.SelectedMail;
+    const body = selectedId !== undefined ? <EmailData {...this.props.SelectedMail}/> : null;
     return body;
   }
 
 }
 
 const mapStateToProps = ({SelectedMail}) => ({SelectedMail});
-const mapDispatchToProps = {selectMail};
+const mapDispatchToProps = {selectMail, unSelectMail};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageContainer);

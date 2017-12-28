@@ -24,7 +24,7 @@ const Root = () => {
     <Provider store={store}>
       <ConnectedRouter history={history}>
         <div className="root">
-          <Navigation nav_items={MAIN_NAVIGATION}/>
+          <Navigation navItems={MAIN_NAVIGATION}/>
           <div className="root_scene-layout">
             <Switch>
               <Route path="/inbox" component={InboxScene}/>
