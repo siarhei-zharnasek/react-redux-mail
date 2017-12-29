@@ -1,5 +1,5 @@
 import {
-  SELECT_MAIL
+  SELECT_MAIL, UNSELECT_MAIL
 } from '../actions/ActionTypes';
 
 const SelectedMail = (state = {}, {type, payload}) => {
@@ -8,6 +8,8 @@ const SelectedMail = (state = {}, {type, payload}) => {
       return {
         ...payload
       };
+    case UNSELECT_MAIL:
+      return {};
 
     default:
       return state;
