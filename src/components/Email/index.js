@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 
 const EmailData = (props) => {
-  const {sender, subject, date} = props;
+  const {sender, subject, date} = props.selectedMailData;
   return (
     <div>
       <span>{sender}</span>
@@ -13,9 +14,11 @@ const EmailData = (props) => {
 };
 
 EmailData.propTypes = {
-  sender: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  subject: PropTypes.string
+  selectedMailData: ImmutablePropTypes.contains({
+    sender: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    subject: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default EmailData;

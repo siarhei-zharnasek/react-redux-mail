@@ -7,5 +7,9 @@ const EmailSchema = new Schema({
   subject: String
 });
 
+module.exports.ShortEmail = {
+  subject: true,
+  date: true
+};
 
-module.exports = mongoose.model('Email', EmailSchema);
+module.exports.EmailModel = mongoose.model('Email', EmailSchema);

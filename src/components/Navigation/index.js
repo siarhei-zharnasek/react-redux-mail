@@ -10,21 +10,23 @@ const Navigation = ({navItems}) => {
   const links = navItems.map((item) => {
     const {key, title} = item;
     return (
-      <li key={key}>
-        <NavLink activeClassName="navigation_main_active-link" to={`/${key}`}>{title}</NavLink>
-      </li>
+      <NavLink activeClassName="navigation_main_active-link" className='navigation_main_link'
+               to={`/${key}`}>{title}</NavLink>
     )
   });
 
   return (
-    <ul className="navigation_main">
+    <div className="navigation_main">
       {links}
-    </ul>
+    </div>
   );
 };
+
 
 Navigation.propTypes = {
   navItems: PropTypes.array.isRequired,
 };
 
 export default Navigation;
+
+//https://colorscheme.ru/#0d41Iw0w0w0w0

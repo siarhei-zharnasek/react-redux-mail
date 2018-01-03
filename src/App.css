@@ -1,5 +1,6 @@
 .root {
     display: flex;
+    padding: 15px;
 }
 
 .root_scene-layout {
@@ -10,3 +11,60 @@
     margin: 0 30px;
 }
 
+/*===============tipography======================*/
+
+ul {
+    list-style: none;
+}
+
+p, div, ul, li {
+    padding: 0;
+    margin: 0;
+}
+
+p, a, span {
+    font-family: "Roboto", "Helvetica Neue", "Arial", sans-serif;
+    font-size: 16px;
+    color: #292b2c;
+}
+
+a {
+    text-decoration: none;
+}
+
+.font-largest {
+    font-size: 30px;
+}
+
+.font-large {
+    font-size: 20px;
+}
+
+.font-medium {
+    font-size: 16px;
+}
+
+.font-small {
+    font-size: 12px;
+}
+
+.font-smallest {
+    font-size: 9px;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+/*================colors===================*/
+.color-text {
+    color: #292b2c;
+}
+
+.color-danger {
+    color: #d43f3a;
+}
+
+.color-success {
+    color: #4cae4c;
+}
