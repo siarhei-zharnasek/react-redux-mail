@@ -3,5 +3,15 @@
 }
 
 .navigation_main_active-link {
-    color: red;
+    color: #0089b9;
+    font-weight: bold;
+}
+
+.navigation_main_link {
+    padding: 5px;
+    display: block;
+}
+
+.navigation_main_link:hover {
+    background-color: rgba(206, 221, 226, 0.5);
 }

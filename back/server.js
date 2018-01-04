@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const Email = require('../models/email');
+const {ShortEmail, EmailModel} = require('../models/email');
 
 const app = express();
 const port = process.env.API_PORT || 3001;
@@ -28,16 +28,33 @@ app.get('/api', function (req, res) {
 });
 
 app.get('/api/emails', function (req, res) {
-  const newEmail = new Email();
-  const sender = 'test';
-  Object.assign(newEmail, req.body, {publishedAt: new Date(), sender,});
-
-  newEmail.save(err => {
-    if (err) {
-      res.send(err);
+  EmailModel.find({}, ShortEmail, (error, emails) => {
+    if (error) {
+      res.send({error: error});
+    } else {
+      res.json({data: emails});
     }
-    res.end();
   });
+});
+
+app.get('/api/emails/:id', function (req, res) {
+  EmailModel.findOne({_id: req.params.id}, (error, email) => {
+    if (error) {
+      res.send({error: error});
+    } else {
+      res.json({data: email});
+    }
+  });
+  // const newEmail = new Email();
+  // const sender = 'test';
+  // Object.assign(newEmail, req.body, {publishedAt: new Date(), sender,});
+  //
+  // newEmail.save(err => {
+  //   if (err) {
+  //     res.send(err);
+  //   }
+  //   res.end();
+  // });
 });
 
 //starts the server and listens for requests

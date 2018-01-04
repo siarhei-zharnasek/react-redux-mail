@@ -15,14 +15,14 @@ class MessageContainer extends Component {
   }
 
   render() {
-    const {id: selectedId} = this.props.SelectedMail;
-    const body = selectedId !== undefined ? <EmailData {...this.props.SelectedMail}/> : null;
+    const {_id: selectedId} = this.props.SelectedMail;
+    const body = selectedId !== undefined ? <EmailData selectedMailData={this.props.SelectedMail}/> : null;
     return body;
   }
 
 }
 
-const mapStateToProps = ({SelectedMail}) => ({SelectedMail});
+const mapStateToProps = ({SelectedMail: {data}}) => ({SelectedMail: data});
 const mapDispatchToProps = {selectMail, unSelectMail};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageContainer);

@@ -1,15 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
+
 import MessagePreview from './MessagePreview';
 
-const MessagesList = ({messages}) => (
-  <div>
-    {messages.map((msg) => <MessagePreview key={msg.id} {...msg} />)}
-  </div>
-);
+const MessagesList = ({messages}) => {
+  return (
+    <div>
+      {messages.map((msg) => <MessagePreview key={msg._id} previewData={msg}/>)}
+    </div>
+  );
+};
 
 MessagesList.propTypes = {
-  messages: PropTypes.array.isRequired
+  messages: ImmutablePropTypes.list.isRequired
 };
 
 export default MessagesList;

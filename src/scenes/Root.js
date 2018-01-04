@@ -7,7 +7,6 @@ import {Route, Redirect, Switch} from 'react-router-dom';
 import createBrowserHistory from 'history/createBrowserHistory';
 import InboxScene from './InboxScene';
 import reducer from '../reducers/index';
-import api from '../middlewares/api';
 import {MAIN_NAVIGATION} from "../const/navigation-items";
 import Navigation from "../components/Navigation";
 import SentScene from "./SentScene";
@@ -16,7 +15,7 @@ import ErrorScene from "./ErrorScene";
 
 
 const history = createBrowserHistory();
-const enhancer = applyMiddleware(thunk, routerMiddleware(history), api);
+const enhancer = applyMiddleware(thunk, routerMiddleware(history));
 const store = createStore(reducer, {}, enhancer);
 
 const Root = () => {

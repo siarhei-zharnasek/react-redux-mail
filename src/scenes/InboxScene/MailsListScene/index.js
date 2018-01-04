@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import MessagesList from './MessagesList';
 import {getMailsData} from '../../../actions/index';
 
@@ -19,7 +19,7 @@ class MailListScene extends Component {
 }
 
 MailListScene.propTypes = {
-  messages: PropTypes.array.isRequired
+  messages: ImmutablePropTypes.list.isRequired
 };
 
 const mapStateToProps = ({MessagesData}) => ({messages: MessagesData.data});
